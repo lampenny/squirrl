@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import LoginForm from "../ui/login/loginform";
+import RegisterForm from "../ui/register/registerform";
 
 export default function Home() {
   return (
@@ -8,7 +8,10 @@ export default function Home() {
       <div className="md:text-2xl font-bold">
         <Link href="/">Squirrl</Link>
       </div>
-      Register page
+      <RegisterForm />
+      <Link href="/login">
+        <Button>Login</Button>
+      </Link>
     </div>
   );
 }

@@ -4,11 +4,11 @@ import { AtSymbolIcon, KeyIcon } from "@heroicons/react/24/outline";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { Button } from "../button";
 
-export default function LoginForm() {
+export default function RegisterForm() {
   return (
     <form action={undefined} className="container space-y-3 w-auto">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className="mb-3 text-2xl">Log in to continue.</h1>
+        <h1 className="mb-3 text-2xl">Register as a member.</h1>
         <div className="w-full">
           <div>
             <label
@@ -52,7 +52,7 @@ export default function LoginForm() {
         </div>
         <div className="mt-4">
           <Button>
-            Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+            Register <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
           </Button>
         </div>
         <div

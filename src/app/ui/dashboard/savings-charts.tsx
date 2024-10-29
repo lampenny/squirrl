@@ -131,7 +131,9 @@ const gauge: ReactEChartsProps["option"] = {
         fontSize: 20,
       },
       max: 500000,
-
+      axisLabel: {
+        show: false,
+      },
       data: [
         {
           value: 250000,
@@ -154,13 +156,13 @@ const gauge: ReactEChartsProps["option"] = {
       //     borderWidth: 10,
       //   },
       // },
-      splitLine: {
-        length: 2,
-        lineStyle: {
-          width: 2,
-          color: "#999",
-        },
-      },
+      // splitLine: {
+      //   length: 2,
+      //   lineStyle: {
+      //     width: 2,
+      //     color: "#999",
+      //   },
+      // },
     },
   ],
 };
