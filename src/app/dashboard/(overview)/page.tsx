@@ -3,7 +3,6 @@ import { format } from "date-fns";
 import CardWrapper from "@/app/ui/dashboard/card-wrapper";
 import { CardSkeleton, ChartSkeleton } from "@/app/ui/skeletons";
 import SavingsCharts from "@/app/ui/dashboard/savings-charts";
-import HeatMap from "@/app/ui/dashboard/heatmap";
 import PensionChart from "@/app/ui/dashboard/pension-chart";
 
 export default async function Page() {
