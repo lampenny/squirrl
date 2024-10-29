@@ -8,10 +8,7 @@ export default function Home() {
       <div className="md:text-2xl font-bold">
         <Link href="/">Squirrl</Link>
       </div>
-      <LoginForm />
-      <Link href="/register">
-        <Button>Register</Button>
-      </Link>
+      Register page
     </div>
   );
 }
