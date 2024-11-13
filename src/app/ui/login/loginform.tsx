@@ -1,12 +1,35 @@
 "use client";
 
+import { useState } from "react";
 import { AtSymbolIcon, KeyIcon } from "@heroicons/react/24/outline";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { Button } from "../button";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = () => {
+    axios
+      .post(`http://localhost:4000/auth/login`, {
+        email: email,
+        password: password,
+      })
+      .then(() => {
+        router.push("/dashboard");
+      })
+      .catch((e) => {
+        alert("something happened");
+        console.log("error", e);
+      });
+  };
+  console.log("password", password);
+
   return (
-    <form action={undefined} className="container space-y-3 w-auto">
+    <form action={handleSubmit} className="container space-y-3 w-auto">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
         <h1 className="mb-3 text-2xl">Log in to continue.</h1>
         <div className="w-full">
@@ -23,6 +46,7 @@ export default function LoginForm() {
                 id="email"
                 type="email"
                 name="email"
+                onBlur={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
                 required
               />
@@ -43,8 +67,9 @@ export default function LoginForm() {
                 type="password"
                 name="password"
                 placeholder="Enter password"
+                onBlur={(e) => setPassword(e.target.value)}
                 required
-                minLength={6}
+                minLength={3}
               />
               <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>

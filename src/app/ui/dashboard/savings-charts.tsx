@@ -170,6 +170,7 @@ const gauge: ReactEChartsProps["option"] = {
 const option: ReactEChartsProps["option"] = {
   series: [
     {
+      name: "Initial deposit",
       label: "Initial deposit",
       type: "bar",
       stack: "initial",
@@ -177,6 +178,7 @@ const option: ReactEChartsProps["option"] = {
       data: [1000],
     },
     {
+      name: "Contributions",
       label: "Contributions",
       type: "bar",
       stack: "initial",
