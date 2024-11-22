@@ -1,12 +1,36 @@
 "use client";
 
+import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import { AtSymbolIcon, KeyIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
+
 import { Button } from "../button";
 
 export default function RegisterForm() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = () => {
+    axios
+      .post(`http://localhost:4000/auth/register`, {
+        name: name,
+        email: email,
+        password: password,
+      })
+      .then(() => {
+        router.push("/dashboard");
+      })
+      .catch((e) => {
+        alert("something happened");
+        console.log("error", e);
+      });
+  };
   return (
-    <form action={undefined} className="container space-y-3 w-auto">
+    <form action={handleSubmit} className="container space-y-3 w-auto">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
         <h1 className="mb-3 text-2xl">Register as a member.</h1>
         <div className="w-full">
@@ -25,6 +49,7 @@ export default function RegisterForm() {
                 name="name"
                 placeholder="Enter your name"
                 required
+                onBlur={(e) => setName(e.target.value)}
               />
               <PencilIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -43,6 +68,7 @@ export default function RegisterForm() {
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
+                onBlur={(e) => setEmail(e.target.value)}
                 required
               />
               <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -62,6 +88,7 @@ export default function RegisterForm() {
                 type="password"
                 name="password"
                 placeholder="Enter password"
+                onBlur={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
               />

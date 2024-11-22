@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { AtSymbolIcon, KeyIcon } from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import { Button } from "../button";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { AtSymbolIcon, KeyIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
+
+import { Button } from "../button";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -26,7 +27,6 @@ export default function LoginForm() {
         console.log("error", e);
       });
   };
-  console.log("password", password);
 
   return (
     <form action={handleSubmit} className="container space-y-3 w-auto">
