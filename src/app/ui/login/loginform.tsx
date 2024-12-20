@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { AtSymbolIcon, KeyIcon } from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
+import { useState } from 'react'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import { AtSymbolIcon, KeyIcon } from '@heroicons/react/24/outline'
+import { ArrowRightIcon } from '@heroicons/react/20/solid'
 
-import { Button } from "../button";
+import { Button } from '../button'
 
 export default function LoginForm() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const router = useRouter()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleSubmit = () => {
     axios
@@ -20,13 +20,13 @@ export default function LoginForm() {
         password: password,
       })
       .then(() => {
-        router.push("/dashboard");
+        router.push('/dashboard')
       })
       .catch((e) => {
-        alert("something happened");
-        console.log("error", e);
-      });
-  };
+        alert('something happened')
+        console.log('error', e)
+      })
+  }
 
   return (
     <form action={handleSubmit} className="container space-y-3 w-auto">
@@ -87,5 +87,5 @@ export default function LoginForm() {
         ></div>
       </div>
     </form>
-  );
+  )
 }

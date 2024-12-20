@@ -1,5 +1,5 @@
-import { CalendarIcon } from "@heroicons/react/24/outline";
-import { Chart, ReactEChartsProps } from "./chart";
+import { CalendarIcon } from '@heroicons/react/24/outline'
+import { Chart, ReactEChartsProps } from './chart'
 
 // const option: ReactEChartsProps["option"] = {
 //   dataset: {
@@ -114,20 +114,20 @@ import { Chart, ReactEChartsProps } from "./chart";
 //   ],
 // };
 
-const gauge: ReactEChartsProps["option"] = {
+const gauge: ReactEChartsProps['option'] = {
   tooltip: {
-    formatter: "{a} <br/>{b} : ¥{c}",
+    formatter: '{a} <br/>{b} : ¥{c}',
   },
   series: [
     {
-      name: "Savings",
-      type: "gauge",
+      name: 'Savings',
+      type: 'gauge',
       progress: {
         show: true,
       },
       detail: {
         valueAnimation: true,
-        formatter: "{value}",
+        formatter: '{value}',
         fontSize: 20,
       },
       max: 500000,
@@ -165,55 +165,51 @@ const gauge: ReactEChartsProps["option"] = {
       // },
     },
   ],
-};
+}
 
-const option: ReactEChartsProps["option"] = {
+const option: ReactEChartsProps['option'] = {
   series: [
     {
-      name: "Initial deposit",
-      label: "Initial deposit",
-      type: "bar",
-      stack: "initial",
-      barWidth: "60%",
+      name: 'Initial deposit',
+      label: 'Initial deposit',
+      type: 'bar',
+      stack: 'initial',
+      barWidth: '60%',
       data: [1000],
     },
     {
-      name: "Contributions",
-      label: "Contributions",
-      type: "bar",
-      stack: "initial",
-      barWidth: "60%",
+      name: 'Contributions',
+      label: 'Contributions',
+      type: 'bar',
+      stack: 'initial',
+      barWidth: '60%',
       data: [300],
     },
   ],
   grid: {
-    left: "10%",
-    right: "10%",
-    top: "10%",
-    bottom: "10%",
+    left: '10%',
+    right: '10%',
+    top: '10%',
+    bottom: '10%',
   },
   yAxis: {
-    type: "value",
+    type: 'value',
   },
   xAxis: {
-    type: "category",
-    data: ["10 years"],
+    type: 'category',
+    data: ['10 years'],
   },
   legend: {
-    data: ["Contributions", "Initial deposit"],
+    data: ['Contributions', 'Initial deposit'],
   },
   tooltip: {},
-};
+}
 
-export default async function SavingsCharts({
-  value,
-}: {
-  value: string | number;
-}) {
-  const date = new Date().getFullYear();
+export default function SavingsCharts({ value }: { value: string | number }) {
+  const date = new Date().getFullYear()
 
   return (
-    <div className="border h-fit w-full border-green-200 rounded-lg p-4">
+    <div className="h-fit bg-gray-100 border-2 border-lime-700 rounded-lg p-4">
       <div className="flex flex-row pb-2 text-xl">
         <p>Savings Summary</p>
       </div>
@@ -222,14 +218,14 @@ export default async function SavingsCharts({
           <p>{date} goal:</p>
           <p>{value}</p>
 
-          <Chart option={gauge} style={{ width: "200px", height: "200px" }} />
+          <Chart option={gauge} style={{ width: '200px', height: '200px' }} />
         </div>
         <div className="flex flex-col items-center justify-center">
           <h2 className="pb-2">Calculated savings growth</h2>
           <p>1.2% APR</p>
-          <Chart option={option} style={{ width: "400px", height: "200px" }} />
+          <Chart option={option} style={{ width: '370px', height: '350px' }} />
         </div>
       </div>
     </div>
-  );
+  )
 }

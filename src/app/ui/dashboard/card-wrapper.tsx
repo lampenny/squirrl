@@ -1,8 +1,8 @@
-import { Card } from "./card";
+import { Card } from './card'
 
-export default async function CardWrapper() {
+export default function CardWrapper() {
   return (
-    <div className="w-full grid grid-cols-2 gap-7 h-fit">
+    <div className="w-full flex flex-col md:flex-row gap-7 h-fit">
       <Card
         title="Income"
         value="¥282,000"
@@ -16,7 +16,7 @@ export default async function CardWrapper() {
         type="expenses"
       />
       <Card
-        title="Credit Card Balance"
+        title="Credit Cards"
         value="¥49,402"
         convertedValue="£252.54"
         type="expenses"
@@ -34,5 +34,5 @@ export default async function CardWrapper() {
         type="investments"
       />
     </div>
-  );
+  )
 }

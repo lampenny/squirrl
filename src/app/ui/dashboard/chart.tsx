@@ -1,16 +1,16 @@
-"use client";
+'use client'
 
-import React, { useRef, useEffect } from "react";
-import { init, getInstanceByDom } from "echarts";
-import type { CSSProperties } from "react";
-import type { EChartsOption, ECharts, SetOptionOpts } from "echarts";
+import React, { useRef, useEffect } from 'react'
+import { init, getInstanceByDom } from 'echarts'
+import type { CSSProperties } from 'react'
+import type { EChartsOption, ECharts, SetOptionOpts } from 'echarts'
 
 export interface ReactEChartsProps {
-  option: EChartsOption;
-  style?: CSSProperties;
-  settings?: SetOptionOpts;
-  loading?: boolean;
-  theme?: "light" | "dark";
+  option: EChartsOption
+  style?: CSSProperties
+  settings?: SetOptionOpts
+  loading?: boolean
+  theme?: 'light' | 'dark'
 }
 
 export function Chart({
@@ -20,45 +20,45 @@ export function Chart({
   loading,
   theme,
 }: ReactEChartsProps): JSX.Element {
-  const chartRef = useRef<HTMLDivElement>(null);
+  const chartRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // Initialize chart
-    let chart: ECharts | undefined;
+    let chart: ECharts | undefined
     if (chartRef.current !== null) {
-      chart = init(chartRef.current, theme);
+      chart = init(chartRef.current, theme)
     }
 
     // Add chart resize listener
     // ResizeObserver is leading to a bit janky UX
     function resizeChart() {
-      chart?.resize();
+      chart?.resize()
     }
-    window.addEventListener("resize", resizeChart);
+    window.addEventListener('resize', resizeChart)
 
     // Return cleanup function
     return () => {
-      chart?.dispose();
-      window.removeEventListener("resize", resizeChart);
-    };
-  }, [theme]);
-
-  useEffect(() => {
-    // Update chart
-    if (chartRef.current !== null) {
-      const chart = getInstanceByDom(chartRef.current);
-      chart?.setOption(option, settings);
+      chart?.dispose()
+      window.removeEventListener('resize', resizeChart)
     }
-  }, [option, settings, theme]); // Whenever theme changes we need to add option and setting due to it being deleted in cleanup function
+  }, [theme])
 
   useEffect(() => {
     // Update chart
     if (chartRef.current !== null) {
-      const chart = getInstanceByDom(chartRef.current);
+      const chart = getInstanceByDom(chartRef.current)
+      chart?.setOption(option, settings)
+    }
+  }, [option, settings, theme]) // Whenever theme changes we need to add option and setting due to it being deleted in cleanup function
+
+  useEffect(() => {
+    // Update chart
+    if (chartRef.current !== null) {
+      const chart = getInstanceByDom(chartRef.current)
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      loading === true ? chart?.showLoading() : chart?.hideLoading();
+      loading === true ? chart?.showLoading() : chart?.hideLoading()
     }
-  }, [loading, theme]);
+  }, [loading, theme])
 
-  return <div ref={chartRef} style={{ ...style }} />;
+  return <div ref={chartRef} style={{ ...style }} />
 }

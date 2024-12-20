@@ -1,80 +1,75 @@
-import { CalendarIcon } from "@heroicons/react/24/outline";
-import { Chart, ReactEChartsProps } from "./chart";
+import { Chart, ReactEChartsProps } from './chart'
 
-const option: ReactEChartsProps["option"] = {
+const option: ReactEChartsProps['option'] = {
   series: [
     {
-      name: "Contributions",
-      type: "line",
-      stack: "Total",
+      name: 'Contributions',
+      type: 'line',
+      stack: 'Total',
       areaStyle: {},
       emphasis: {
-        focus: "series",
+        focus: 'series',
       },
       data: [120, 130, 140, 150, 160, 170, 210, 240, 250, 260],
     },
     {
-      name: "Compound Growth",
-      type: "line",
-      stack: "Total",
+      name: 'Compound Growth',
+      type: 'line',
+      stack: 'Total',
       areaStyle: {},
       emphasis: {
-        focus: "series",
+        focus: 'series',
       },
       data: [125, 135, 142, 155, 165, 172, 220, 260, 280, 300],
     },
   ],
   grid: {
-    left: "3%",
-    right: "4%",
-    bottom: "3%",
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
     containLabel: true,
   },
   yAxis: {
-    type: "value",
+    type: 'value',
   },
   xAxis: {
-    type: "category",
-    data: ["20", "25", "30", "35", "40", "45", "50", "55", "60", "65"],
+    type: 'category',
+    data: ['20', '25', '30', '35', '40', '45', '50', '55', '60', '65'],
     boundaryGap: false,
   },
   legend: {
-    data: ["Contributions", "Compound Growth"],
+    data: ['Contributions', 'Compound Growth'],
   },
   tooltip: {
-    trigger: "axis",
+    trigger: 'axis',
     axisPointer: {
-      type: "cross",
+      type: 'cross',
       label: {
-        backgroundColor: "#6a7985",
+        backgroundColor: '#6a7985',
       },
     },
   },
-};
+}
 
-export default async function PensionChart({
-  value,
-}: {
-  value: string | number;
-}) {
-  const date = new Date().getFullYear();
+export default function PensionChart({ value }: { value: string | number }) {
+  const date = new Date().getFullYear()
 
   return (
-    <div className="border h-fit w-full border-yellow-200 rounded-lg p-4">
+    <div className="h-fit w-full bg-gray-100 border-2 border-lime-700 rounded-lg p-4">
       <div className="flex flex-row pb-2 text-xl">
         <p>Pension Summary</p>
       </div>
       <div className="flex flex-col space-y-5 items-center justify-center">
         <p>Private</p>
         <div>
-          <Chart option={option} style={{ width: "500px", height: "200px" }} />
+          <Chart option={option} style={{ width: '550px', height: '200px' }} />
         </div>
 
         <p>State</p>
         <div>
-          <Chart option={option} style={{ width: "500px", height: "200px" }} />
+          <Chart option={option} style={{ width: '550px', height: '200px' }} />
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { Button } from "@/app/ui/button";
+import { Button } from '@/app/ui/button'
 
 export default async function Page() {
   return (
@@ -72,5 +72,5 @@ export default async function Page() {
         ></div>
       </div>
     </form>
-  );
+  )
 }

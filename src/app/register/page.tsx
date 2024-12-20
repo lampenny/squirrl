@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Button } from "../ui/button";
-import RegisterForm from "../ui/register/registerform";
+import Link from 'next/link'
+import { Button } from '../ui/button'
+import RegisterForm from '../ui/register/registerform'
 
 export default function Home() {
   return (
@@ -13,5 +13,5 @@ export default function Home() {
         <Button>Login</Button>
       </Link>
     </div>
-  );
+  )
 }

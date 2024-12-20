@@ -1,6 +1,6 @@
 # Squirrl
 
-A personal finance & planning app created with React, NextJS and TypeScript.
+A personal finance dashboard created with React, NextJS and TypeScript.
 
 ## Getting Started
 
@@ -15,7 +15,6 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and remove external network requests for improved privacy and performance.
-
 
 ## Deploy on Vercel
 
