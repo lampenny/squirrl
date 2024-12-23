@@ -25,7 +25,6 @@ export default function RegisterForm() {
         router.push('/dashboard')
       })
       .catch((e) => {
-        alert('something happened')
         console.log('error', e)
       })
   }

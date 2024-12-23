@@ -1,6 +1,7 @@
 import '@/app/ui/global.css'
 import type { Metadata } from 'next'
 import { Sono } from 'next/font/google'
+import { Providers } from './providers'
 
 // If loading a variable font, you don't need to specify the font weight
 // If you can't use a variable font, you will need to specify a weight
@@ -22,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={sono.className}>{children}</body>
+      <body className={sono.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }

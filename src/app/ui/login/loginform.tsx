@@ -1,15 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { AtSymbolIcon, KeyIcon } from '@heroicons/react/24/outline'
 import { ArrowRightIcon } from '@heroicons/react/20/solid'
-
 import { Button } from '../button'
+import { CurrentUserContext } from '@/app/providers'
 
 export default function LoginForm() {
   const router = useRouter()
+  const { setCurrentUser } = useContext(CurrentUserContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -19,11 +20,11 @@ export default function LoginForm() {
         email: email,
         password: password,
       })
-      .then(() => {
+      .then(({ data }) => {
+        setCurrentUser(data.user)
         router.push('/dashboard')
       })
       .catch((e) => {
-        alert('something happened')
         console.log('error', e)
       })
   }

@@ -1,118 +1,4 @@
-import { CalendarIcon } from '@heroicons/react/24/outline'
 import { Chart, ReactEChartsProps } from './chart'
-
-// const option: ReactEChartsProps["option"] = {
-//   dataset: {
-//     source: [
-//       ["Year", "Initial Deposit", "Contributions", "Interest earned"],
-//       ["10 years", 1200, 1330, 120],
-//     ],
-//   },
-//   tooltip: {
-//     trigger: "axis",
-//     axisPointer: {
-//       type: "shadow",
-//     },
-//   },
-//   legend: {
-//     data: ["Initial Deposit", "Contributions", "Interest earned"],
-//     bottom: -5,
-//     icon: "circle",
-//   },
-//   grid: {
-//     left: "10%",
-//     right: "10%",
-//     top: "0%",
-//     bottom: "25%",
-//   },
-//   xAxis: {
-//     type: "value",
-//   },
-//   yAxis: {
-//     type: "category",
-//   },
-//   series: [
-//     {
-//       type: "bar",
-//       stack: "total",
-//       label: {
-//         show: true,
-//       },
-//       itemStyle: {
-//         color: "#A7F3D0",
-//       },
-//     },
-//     {
-//       type: "bar",
-//       stack: "total",
-//       label: {
-//         show: true,
-//       },
-//     },
-//     {
-//       type: "bar",
-//       stack: "total",
-//       label: {
-//         show: true,
-//       },
-//     },
-//   ],
-// };
-
-// const gauge: ReactEChartsProps["option"] = {
-//   series: [
-//     {
-//       type: "gauge",
-//       progress: {
-//         show: true,
-//         width: 18,
-//       },
-//       axisLine: {
-//         lineStyle: {
-//           width: 10,
-//         },
-//       },
-//       tooltip: {
-//         formatter: "{a} <br/>{b} : {c}%",
-//       },
-//       axisTick: {
-//         show: false,
-//       },
-//       splitLine: {
-//         length: 2,
-//         lineStyle: {
-//           width: 2,
-//           color: "#999",
-//         },
-//       },
-//       axisLabel: {
-//         show: false,
-//       },
-//       anchor: {
-//         show: true,
-//         showAbove: true,
-//         size: 25,
-//         itemStyle: {
-//           borderWidth: 10,
-//         },
-//       },
-//       title: {
-//         show: false,
-//       },
-//       detail: {
-//         valueAnimation: true,
-//         fontSize: 20,
-//         offsetCenter: [0, "110%"],
-//       },
-//       max: 1000000,
-//       data: [
-//         {
-//           value: 602000,
-//         },
-//       ],
-//     },
-//   ],
-// };
 
 const gauge: ReactEChartsProps['option'] = {
   tooltip: {
@@ -213,7 +99,7 @@ export default function SavingsCharts({ value }: { value: string | number }) {
       <div className="flex flex-row pb-2 text-xl">
         <p>Savings Summary</p>
       </div>
-      <div className="flex flex-row gap-5 items-center justify-center">
+      <div className="flex flex-col xlg:flex-row gap-5 items-center justify-center">
         <div className="flex flex-col items-center justify-center">
           <p>{date} goal:</p>
           <p>{value}</p>

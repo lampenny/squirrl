@@ -18,15 +18,15 @@ export function Chart({
   style,
   settings,
   loading,
-  theme,
 }: ReactEChartsProps): JSX.Element {
   const chartRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // Initialize chart
     let chart: ECharts | undefined
+
     if (chartRef.current !== null) {
-      chart = init(chartRef.current, theme)
+      chart = init(chartRef.current)
     }
 
     // Add chart resize listener
@@ -41,7 +41,7 @@ export function Chart({
       chart?.dispose()
       window.removeEventListener('resize', resizeChart)
     }
-  }, [theme])
+  }, [option])
 
   useEffect(() => {
     // Update chart
@@ -49,16 +49,15 @@ export function Chart({
       const chart = getInstanceByDom(chartRef.current)
       chart?.setOption(option, settings)
     }
-  }, [option, settings, theme]) // Whenever theme changes we need to add option and setting due to it being deleted in cleanup function
+  }, [option, settings])
 
   useEffect(() => {
     // Update chart
     if (chartRef.current !== null) {
       const chart = getInstanceByDom(chartRef.current)
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       loading === true ? chart?.showLoading() : chart?.hideLoading()
     }
-  }, [loading, theme])
+  }, [loading])
 
   return <div ref={chartRef} style={{ ...style }} />
 }

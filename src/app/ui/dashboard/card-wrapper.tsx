@@ -1,11 +1,19 @@
 import { Card } from './card'
 
-export default function CardWrapper() {
+export interface FinancialData {
+  id: number
+  income: string
+  expenses: string
+  credit_card_balance: string
+  investments: string
+  pension: string
+}
+export default function CardWrapper({ finances }: { finances: FinancialData }) {
   return (
-    <div className="w-full flex flex-col md:flex-row gap-7 h-fit">
+    <div className="w-full flex flex-col lg:flex-row gap-7 h-fit">
       <Card
         title="Income"
-        value="¥282,000"
+        value={finances?.income || 0}
         convertedValue="£1,441.58"
         type="income"
       />
