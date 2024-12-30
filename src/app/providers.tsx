@@ -12,6 +12,7 @@ export const CurrentUserContext = createContext<{
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [currentUser, setCurrentUser] = useState(null)
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}

@@ -12,6 +12,7 @@ import { CurrentUserContext } from '@/app/providers'
 export default function Overview() {
   const { currentUser } = useContext(CurrentUserContext)
   const [finances, setFinances] = useState<FinancialData>()
+  const [edit, setEdit] = useState(false)
   const now = new Date()
   const date = format(now, 'EEEE do MMMM')
   const shortDate = format(now, 'dd/MM/yyyy')
@@ -35,13 +36,24 @@ export default function Overview() {
 
   return (
     <div className="w-full items-center justify-center">
-      <div className="flex flex-col md:flex-row md:gap-8 pb-5 place-items-baseline">
-        <h1 className="text-2xl">{date}</h1>
-        <p className="text-sm text-gray-400">last updated: {shortDate}</p>
+      <div className="flex flex-col md:flex-row md:gap-8 pb-5 place-items-baseline justify-between">
+        <div className="flex flex-row place-items-baseline gap-x-5">
+          <h1 className="text-2xl">{date}</h1>
+          <p className="text-sm text-gray-400">last updated: {shortDate}</p>
+        </div>
+        <div>
+          <button
+            onClick={() => {
+              setEdit(true)
+            }}
+          >
+            edit
+          </button>
+        </div>
       </div>
       <div className="mb-5">
         <Suspense fallback={<CardSkeleton />}>
-          <CardWrapper finances={finances} />
+          <CardWrapper finances={finances} onEdit={edit} />
         </Suspense>
       </div>
       <div className="flex flex-row items-center justify-center">

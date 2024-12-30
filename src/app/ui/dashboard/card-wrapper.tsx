@@ -8,7 +8,13 @@ export interface FinancialData {
   investments: string
   pension: string
 }
-export default function CardWrapper({ finances }: { finances: FinancialData }) {
+export default function CardWrapper({
+  finances,
+  onEdit,
+}: {
+  finances: any
+  onEdit: boolean
+}) {
   return (
     <div className="w-full flex flex-col lg:flex-row gap-7 h-fit">
       <Card
