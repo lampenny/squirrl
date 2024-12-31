@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react'
 import {
   BanknotesIcon,
   WalletIcon,
@@ -30,11 +31,15 @@ export function Card({
   value,
   convertedValue,
   type,
+  onEdit,
+  onChange,
 }: {
   title: string
   value: number | string
   convertedValue: number | string
   type: 'income' | 'expenses' | 'credit' | 'investments'
+  onEdit: boolean
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }) {
   const { icon: Icon, color: Color } = typeMap[type]
 
@@ -48,12 +53,25 @@ export function Card({
           {title}
         </p>
       </div>
-      <p
-        className={`
+      {onEdit ? (
+        <div
+          className="
+         sm:truncate rounded-xl bg-white sm:px-4 sm:py-6 sm:text-center text-xs lg:text-2xl"
+        >
+          <input
+            className="max-w-36 outline-none"
+            value={value}
+            onChange={onChange}
+          />
+        </div>
+      ) : (
+        <p
+          className={`
          sm:truncate rounded-xl bg-white sm:px-4 sm:py-6 sm:text-center text-xs lg:text-2xl`}
-      >
-        {value}
-      </p>
+        >
+          ¥{value}
+        </p>
+      )}
       <div className="hidden sm:flex flex-row gap-2 text-xs lg:text-base text-gray-400 items-center place-content-end pt-3">
         <ArrowsRightLeftIcon className="h-0 w-0 sm:h-5 sm:w-5 text-gray-400" />
         {convertedValue}

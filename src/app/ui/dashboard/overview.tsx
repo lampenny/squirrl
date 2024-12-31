@@ -1,8 +1,8 @@
 'use client'
 
-import { format } from 'date-fns'
 import { Suspense, useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import { format } from 'date-fns'
 import { CardSkeleton, ChartSkeleton } from '../skeletons'
 import CardWrapper, { FinancialData } from './card-wrapper'
 import SavingsCharts from './savings-charts'
@@ -12,7 +12,7 @@ import { CurrentUserContext } from '@/app/providers'
 export default function Overview() {
   const { currentUser } = useContext(CurrentUserContext)
   const [finances, setFinances] = useState<FinancialData>()
-  const [edit, setEdit] = useState(false)
+
   const now = new Date()
   const date = format(now, 'EEEE do MMMM')
   const shortDate = format(now, 'dd/MM/yyyy')
@@ -41,19 +41,10 @@ export default function Overview() {
           <h1 className="text-2xl">{date}</h1>
           <p className="text-sm text-gray-400">last updated: {shortDate}</p>
         </div>
-        <div>
-          <button
-            onClick={() => {
-              setEdit(true)
-            }}
-          >
-            edit
-          </button>
-        </div>
       </div>
       <div className="mb-5">
         <Suspense fallback={<CardSkeleton />}>
-          <CardWrapper finances={finances} onEdit={edit} />
+          <CardWrapper finances={finances} />
         </Suspense>
       </div>
       <div className="flex flex-row items-center justify-center">
