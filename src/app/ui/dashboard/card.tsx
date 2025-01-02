@@ -35,7 +35,7 @@ export function Card({
   onChange,
 }: {
   title: string
-  value: number | string
+  value: number | string | undefined
   convertedValue: number | string
   type: 'income' | 'expenses' | 'credit' | 'investments'
   onEdit: boolean
@@ -54,22 +54,20 @@ export function Card({
         </p>
       </div>
       {onEdit ? (
-        <div
-          className="
-         sm:truncate rounded-xl bg-white sm:px-4 sm:py-6 sm:text-center text-xs lg:text-2xl"
-        >
+        <form className="sm:truncate rounded-xl bg-white sm:px-4 sm:py-6 sm:text-center text-xs lg:text-2xl">
           <input
-            className="max-w-36 outline-none"
+            className="max-w-28 outline-none"
             value={value}
             onChange={onChange}
+            required
           />
-        </div>
+        </form>
       ) : (
         <p
           className={`
          sm:truncate rounded-xl bg-white sm:px-4 sm:py-6 sm:text-center text-xs lg:text-2xl`}
         >
-          ¥{value}
+          £{Number(value).toLocaleString('en-US')}
         </p>
       )}
       <div className="hidden sm:flex flex-row gap-2 text-xs lg:text-base text-gray-400 items-center place-content-end pt-3">
