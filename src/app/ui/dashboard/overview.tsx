@@ -12,10 +12,9 @@ import { CurrentUserContext, FinancesContext } from '@/app/providers'
 export default function Overview() {
   const { currentUser } = useContext(CurrentUserContext)
   const { setFinances } = useContext(FinancesContext)
-
+  const [financesIsLoaded, setFinanceIsLoaded] = useState(false)
   const now = new Date()
   const date = format(now, 'EEEE do MMMM')
-  // const formatShortDate = format(shortDate, 'dd/MM/yyyy')
 
   useEffect(() => {
     if (currentUser) {
@@ -23,6 +22,7 @@ export default function Overview() {
         .get(`http://localhost:4000/finances/${currentUser.user_id}`)
         .then(({ data }) => {
           setFinances(data)
+          setFinanceIsLoaded(true)
         })
         .catch((e) => {
           console.log('error', e)
@@ -39,13 +39,13 @@ export default function Overview() {
       </div>
       <div className="mb-5">
         <Suspense fallback={<CardSkeleton />}>
-          <CardWrapper />
+          <CardWrapper isLoading={financesIsLoaded} />
         </Suspense>
       </div>
       <div className="flex flex-row items-center justify-center">
         <div className="hidden md:flex lg:flex-row flex-col lg:space-x-2 space-y-2 lg:space-y-0">
           <Suspense fallback={<ChartSkeleton />}>
-            <SavingsCharts value="¥500,000" />
+            <SavingsCharts value="£10,000" />
           </Suspense>
           <Suspense fallback={<ChartSkeleton />}>
             <PensionChart value="value" />

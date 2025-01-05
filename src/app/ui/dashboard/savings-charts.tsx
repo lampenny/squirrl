@@ -16,13 +16,13 @@ const gauge: ReactEChartsProps['option'] = {
         formatter: '{value}',
         fontSize: 20,
       },
-      max: 500000,
+      max: 10000,
       axisLabel: {
         show: false,
       },
       data: [
         {
-          value: 250000,
+          value: 4200,
           // name: "Saved",
         },
       ],
@@ -101,8 +101,9 @@ export default function SavingsCharts({ value }: { value: string | number }) {
       </div>
       <div className="flex flex-col xlg:flex-row gap-5 items-center justify-center">
         <div className="flex flex-col items-center justify-center">
-          <p>{date} goal:</p>
-          <p>{value}</p>
+          <p>
+            {date} goal: {value}
+          </p>
 
           <Chart option={gauge} style={{ width: '200px', height: '200px' }} />
         </div>

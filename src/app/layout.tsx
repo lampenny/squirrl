@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={sono.className}>
+      <body className={`${sono.className} bg-gray-200`}>
         <Providers>{children}</Providers>
       </body>
     </html>

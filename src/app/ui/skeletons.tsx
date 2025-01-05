@@ -18,6 +18,23 @@ export function CardSkeleton() {
   )
 }
 
+export function CardWrapperSkeleton() {
+  return (
+    <>
+      <div
+        className={`${shimmer} relative mb-4 h-8 w-36 overflow-hidden rounded-md bg-gray-100`}
+      />
+      <div className="grid gap-6 sm:grid-cols-5 lg:grid-cols-5">
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+      </div>
+    </>
+  )
+}
+
 export default function DashboardSkeleton() {
   return (
     <>

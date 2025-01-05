@@ -70,10 +70,10 @@ export function Card({
           £{Number(value).toLocaleString('en-US')}
         </p>
       )}
-      <div className="hidden sm:flex flex-row gap-2 text-xs lg:text-base text-gray-400 items-center place-content-end pt-3">
+      {/* <div className="hidden sm:flex flex-row gap-2 text-xs lg:text-base text-gray-400 items-center place-content-end pt-3">
         <ArrowsRightLeftIcon className="h-0 w-0 sm:h-5 sm:w-5 text-gray-400" />
         {convertedValue}
-      </div>
+      </div> */}
     </div>
   )
 }

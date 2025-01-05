@@ -20,12 +20,21 @@ export const FinancesContext = createContext<{
 })
 
 const getInitialState = () => {
-  const currentUser = sessionStorage.getItem('currentUser')
-  return currentUser ? JSON.parse(currentUser) : null
+  if (typeof window !== 'undefined') {
+    const currentUser = sessionStorage.getItem('currentUser')
+    return currentUser ? JSON.parse(currentUser) : null
+  }
+
+  return null
 }
+
 const getInitialStateFinances = () => {
-  const currentFinances = sessionStorage.getItem('finances')
-  return currentFinances ? JSON.parse(currentFinances) : null
+  if (typeof window !== 'undefined') {
+    const currentFinances = sessionStorage.getItem('finances')
+    return currentFinances ? JSON.parse(currentFinances) : null
+  }
+
+  return null
 }
 
 export function Providers({ children }: { children: React.ReactNode }) {

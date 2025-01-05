@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import axios from 'axios'
 import { Card } from './card'
 import { CurrentUserContext, FinancesContext } from '@/app/providers'
+import { CardWrapperSkeleton } from '../skeletons'
 
 export interface FinancialData {
   id: number
@@ -13,7 +14,7 @@ export interface FinancialData {
   updated_at: string
 }
 
-export default function CardWrapper() {
+export default function CardWrapper({ isLoading }: { isLoading: boolean }) {
   const { finances } = useContext(FinancesContext)
 
   const [edit, setEdit] = useState(false)
@@ -34,7 +35,7 @@ export default function CardWrapper() {
         id: finances?.id,
       })
       .then((response) => {
-        console.log('response', response)
+        sessionStorage.setItem('finances', JSON.stringify(response.data))
       })
       .catch((error) => console.log('error', error))
   }
@@ -64,52 +65,52 @@ export default function CardWrapper() {
         )}
       </div>
 
-      <div className="w-full flex flex-col lg:flex-row gap-7 h-fit">
-        {finances && (
-          <>
-            <Card
-              title="Income"
-              value={income}
-              convertedValue="£1,441.58"
-              type="income"
-              onEdit={edit}
-              onChange={(e) => setIncome(e.target.value)}
-            />
-            <Card
-              title="Expenses"
-              value={expenses}
-              convertedValue="£628.78"
-              type="expenses"
-              onEdit={edit}
-              onChange={(e) => setExpenses(e.target.value)}
-            />
-            <Card
-              title="Credit Cards"
-              value={credit}
-              convertedValue="£252.54"
-              type="expenses"
-              onEdit={edit}
-              onChange={(e) => setCredit(e.target.value)}
-            />
-            <Card
-              title="Investments"
-              value={investments}
-              convertedValue="£5123.91"
-              type="investments"
-              onEdit={edit}
-              onChange={(e) => setInvestments(e.target.value)}
-            />
-            <Card
-              title="Pension"
-              value={pension}
-              convertedValue="¥100,168.19"
-              type="investments"
-              onEdit={edit}
-              onChange={(e) => setPension(e.target.value)}
-            />
-          </>
-        )}
-      </div>
+      {isLoading ? (
+        <CardWrapperSkeleton />
+      ) : (
+        <div className="w-full flex flex-col lg:flex-row gap-7 h-fit">
+          <Card
+            title="Income"
+            value={income}
+            convertedValue="£1,441.58"
+            type="income"
+            onEdit={edit}
+            onChange={(e) => setIncome(e.target.value)}
+          />
+          <Card
+            title="Expenses"
+            value={expenses}
+            convertedValue="£628.78"
+            type="expenses"
+            onEdit={edit}
+            onChange={(e) => setExpenses(e.target.value)}
+          />
+          <Card
+            title="Credit Cards"
+            value={credit}
+            convertedValue="£252.54"
+            type="expenses"
+            onEdit={edit}
+            onChange={(e) => setCredit(e.target.value)}
+          />
+          <Card
+            title="Investments"
+            value={investments}
+            convertedValue="£5123.91"
+            type="investments"
+            onEdit={edit}
+            onChange={(e) => setInvestments(e.target.value)}
+          />
+          <Card
+            title="Pension"
+            value={pension}
+            convertedValue="¥100,168.19"
+            type="investments"
+            onEdit={edit}
+            onChange={(e) => setPension(e.target.value)}
+          />
+        </div>
+      )}
     </div>
   )
 }
