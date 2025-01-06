@@ -9,6 +9,14 @@ Dashboard
 Login page
 ![login](https://github.com/user-attachments/assets/308dde3b-fd9b-4c4d-a579-cfe94ec2becc)
 
+## Key features
+- User registration/login
+- Data entry for income and expenses
+- Data visualisation charts
+  
+### To do
+- Settings and currency
+
 ## Getting Started
 
 First, run the development server:
@@ -19,7 +27,7 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser.
+Open [http://localhost:3000](http://localhost:3000) with your browser. Backend node server at: https://github.com/lampenny/squirrl-api
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and remove external network requests for improved privacy and performance.
 
