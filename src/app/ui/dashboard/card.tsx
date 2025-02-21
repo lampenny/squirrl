@@ -67,7 +67,9 @@ export function Card({
           className={`
          sm:truncate rounded-xl bg-white sm:px-4 sm:py-6 sm:text-center text-xs lg:text-2xl`}
         >
-          £{Number(value).toLocaleString('en-US')}
+          {Number(value)
+            ? `£${Number(value).toLocaleString('en-US')}`
+            : 'No data'}
         </p>
       )}
       {/* <div className="hidden sm:flex flex-row gap-2 text-xs lg:text-base text-gray-400 items-center place-content-end pt-3">
