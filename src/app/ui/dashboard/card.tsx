@@ -42,7 +42,7 @@ export function Card({
   const { icon: Icon, color: Color } = typeMap[type]
 
   return (
-    <div className="container sm:border-2 border-2 border-lime-700 sm:rounded-xl sm:bg-gray-100 sm:p-2 sm:shadow-sm">
+    <div className="container sm:border-2 border-2 border-lime-700 sm:rounded-xl sm:bg-gray-100 sm:p-2 sm:shadow-xs">
       <div className="flex sm:p-2">
         {Icon ? <Icon className={`h-0 w-0 sm:h-5 sm:w-5 ${Color}`} /> : null}
         <p
@@ -54,7 +54,7 @@ export function Card({
       {onEdit ? (
         <form className="sm:truncate rounded-xl bg-white sm:px-4 sm:py-6 sm:text-center text-xs lg:text-2xl">
           <input
-            className="max-w-28 outline-none"
+            className="max-w-28 outline-hidden"
             value={value}
             onChange={onChange}
             required
