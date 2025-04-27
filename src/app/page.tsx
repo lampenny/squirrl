@@ -9,8 +9,8 @@ export default function Home() {
           <p className="text-6xl">🐿️</p>
           Squirrl
         </div>
-        Track your personal finances all in one place from everyday budgeting
-        and credit cards to investments and pensions.
+        Track your personal finances all in one place from everyday budgeting to
+        investments.
         <div className="flex flex-row space-x-5">
           <Link href="/login">
             <Button>Log In</Button>

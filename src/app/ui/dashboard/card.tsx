@@ -4,7 +4,6 @@ import {
   WalletIcon,
   ArrowTrendingDownIcon,
   InboxIcon,
-  ArrowsRightLeftIcon,
 } from '@heroicons/react/24/outline'
 
 const typeMap = {
@@ -29,7 +28,6 @@ const typeMap = {
 export function Card({
   title,
   value,
-  convertedValue,
   type,
   onEdit,
   onChange,
@@ -72,10 +70,6 @@ export function Card({
             : 'No data'}
         </p>
       )}
-      {/* <div className="hidden sm:flex flex-row gap-2 text-xs lg:text-base text-gray-400 items-center place-content-end pt-3">
-        <ArrowsRightLeftIcon className="h-0 w-0 sm:h-5 sm:w-5 text-gray-400" />
-        {convertedValue}
-      </div> */}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { AtSymbolIcon, KeyIcon } from '@heroicons/react/24/outline'
@@ -16,7 +16,7 @@ export default function LoginForm() {
 
   const handleSubmit = () => {
     axios
-      .post(`http://localhost:4000/auth/login`, {
+      .post('http://localhost:4000/auth/login', {
         email: email,
         password: password,
       })
