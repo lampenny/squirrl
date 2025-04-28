@@ -34,7 +34,6 @@ export function Card({
 }: {
   title: string
   value: number | string | undefined
-  convertedValue: number | string
   type: 'income' | 'expenses' | 'credit' | 'investments'
   onEdit: boolean
   onChange: (e: ChangeEvent<HTMLInputElement>) => void

@@ -2,10 +2,17 @@
 
 import React, { useEffect, createContext, useState } from 'react'
 import { FinancialData } from './ui/dashboard/card-wrapper'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+interface User {
+  user_id: number
+  name: string
+  email: string
+}
 
 export const CurrentUserContext = createContext<{
-  currentUser: any
-  setCurrentUser: (user: any) => void
+  currentUser: User | null
+  setCurrentUser: (user: User) => void
 }>({
   currentUser: null,
   setCurrentUser: () => {},
@@ -40,6 +47,7 @@ const getInitialStateFinances = () => {
 export function Providers({ children }: { children: React.ReactNode }) {
   const [currentUser, setCurrentUser] = useState(getInitialState)
   const [finances, setFinances] = useState(getInitialStateFinances)
+  const [queryClient] = useState(() => new QueryClient())
 
   useEffect(() => {
     sessionStorage.setItem('currentUser', JSON.stringify(currentUser))
@@ -47,10 +55,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }, [currentUser, finances])
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
-      <FinancesContext.Provider value={{ finances, setFinances }}>
-        {children}
-      </FinancesContext.Provider>
-    </CurrentUserContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
+        <FinancesContext.Provider value={{ finances, setFinances }}>
+          {children}
+        </FinancesContext.Provider>
+      </CurrentUserContext.Provider>
+    </QueryClientProvider>
   )
 }

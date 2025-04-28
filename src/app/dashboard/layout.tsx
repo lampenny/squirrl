@@ -1,3 +1,5 @@
+'use client'
+
 import Navbar from '@/app/ui/dashboard/navbar'
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -1,7 +1,9 @@
-import { Button } from './ui/button'
-import Link from 'next/link'
+'use client'
 
-export default function Home() {
+import Link from 'next/link'
+import { Button } from './ui/button'
+
+export default function Landing() {
   return (
     <div className="items-center justify-items-center text-center m-32 pb-10 sm:p-20">
       <div className="flex flex-col md:w-1/2 items-center justify-center gap-10">
