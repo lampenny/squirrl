@@ -2,7 +2,7 @@
 
 ## Work in progress ⌛
 
-A personal finance dashboard created with React, NextJS and TypeScript. Charts by [React Charts](https://react-charts.tanstack.com/).
+A personal finance dashboard created with React, NextJS and TypeScript. Charts by [Recharts](https://recharts.org/en-US).
 
 Dashboard
 ![dashboard](https://github.com/user-attachments/assets/f6ecd54c-6033-4e98-85e9-1706675f0844)

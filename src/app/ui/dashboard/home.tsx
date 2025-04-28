@@ -2,6 +2,7 @@
 
 import { format } from 'date-fns'
 import CardWrapper from './card-wrapper'
+import OverviewChart from './overview-chart'
 
 export default function Home() {
   const now = new Date()
@@ -16,6 +17,10 @@ export default function Home() {
       </div>
       <div className="mb-5">
         <CardWrapper />
+      </div>
+
+      <div>
+        <OverviewChart />
       </div>
     </div>
   )

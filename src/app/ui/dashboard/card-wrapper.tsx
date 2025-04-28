@@ -17,7 +17,7 @@ export interface FinancialData {
   updated_at: string
 }
 
-const fetchFinances = async (userId: number): Promise<FinancialData> => {
+export const fetchFinances = async (userId: number): Promise<FinancialData> => {
   const response = await axios.get(`http://localhost:4000/finances/${userId}`)
 
   if (response.status !== 200) {
@@ -127,7 +127,7 @@ export default function CardWrapper() {
           onChange={(e) => setPension(e.target.value)}
         />
       </div>
-      <div className="flex justify-end py-5">
+      <div className="flex justify-end pt-5">
         {!edit && (
           <Button
             onClick={() => {
