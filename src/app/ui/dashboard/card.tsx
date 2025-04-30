@@ -41,7 +41,7 @@ export function Card({
   const { icon: Icon, color: Color } = typeMap[type]
 
   return (
-    <div className="container sm:border-2 border-2 border-lime-700 sm:rounded-xl sm:bg-gray-100 sm:p-2 sm:shadow-xs">
+    <div className="container sm:border-2 md:border-2 md:border-lime-700 sm:rounded-xl sm:bg-gray-100 sm:p-2 sm:shadow-xs">
       <div className="flex sm:p-2">
         {Icon ? <Icon className={`h-0 w-0 sm:h-5 sm:w-5 ${Color}`} /> : null}
         <p

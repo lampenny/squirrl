@@ -1,6 +1,13 @@
 import React, { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { PieChart, Pie, Legend, Tooltip, Cell } from 'recharts'
+import {
+  PieChart,
+  Pie,
+  Legend,
+  Tooltip,
+  Cell,
+  ResponsiveContainer,
+} from 'recharts'
 import { format } from 'date-fns'
 import { CurrentUserContext } from '@/app/providers'
 import { fetchFinances } from './card-wrapper'
@@ -8,7 +15,7 @@ import { ChartSkeleton } from '../skeletons'
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
 
-export default function OverviewChart() {
+export default function PensionChart() {
   const now = new Date()
   const month = format(now, 'MMMM')
   const { currentUser } = useContext(CurrentUserContext)
@@ -30,14 +37,8 @@ export default function OverviewChart() {
   }
 
   const pieData = [
-    {
-      name: 'Expenses',
-      value:
-        parseInt(finances.expenses) + parseInt(finances.credit_card_balance) ||
-        0,
-    },
-    { name: 'Income', value: parseInt(finances.income) || 0 },
-    { name: 'Investments', value: parseInt(finances.investments) || 0 },
+    { name: 'Pension', value: 50000 },
+    { name: 'Investments', value: 23400 },
   ]
 
   if (isLoading) {
@@ -46,23 +47,20 @@ export default function OverviewChart() {
 
   return (
     <div>
-      Overview of {month}
-      <PieChart width={500} height={350}>
+      Retirement savings
+      <PieChart width={400} height={400}>
         <Pie
           dataKey="value"
-          isAnimationActive={false}
+          startAngle={180}
+          endAngle={0}
           data={pieData}
           cx="50%"
           cy="50%"
-          outerRadius={100}
+          outerRadius={80}
           fill="#8884d8"
           label
-        >
-          {pieData.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
+          legendType="square"
+        />
         <Legend />
       </PieChart>
     </div>

@@ -85,7 +85,7 @@ export default function CardWrapper() {
 
   return (
     <div>
-      <div className="w-full flex flex-col lg:flex-row gap-7 h-fit">
+      <div className="w-full flex flex-row gap-7 h-fit">
         {isError && (
           <p className="text-red-500">
             Something went wrong. Please try again later.

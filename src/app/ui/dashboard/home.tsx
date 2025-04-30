@@ -3,6 +3,7 @@
 import { format } from 'date-fns'
 import CardWrapper from './card-wrapper'
 import OverviewChart from './overview-chart'
+import PensionChart from './pension-chart'
 
 export default function Home() {
   const now = new Date()
@@ -19,8 +20,9 @@ export default function Home() {
         <CardWrapper />
       </div>
 
-      <div>
+      <div className="md:flex hidden flex-row w-full">
         <OverviewChart />
+        <PensionChart />
       </div>
     </div>
   )
