@@ -1,33 +1,18 @@
-import React, { useContext } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import React from 'react'
 import { PieChart, Pie, Legend, Tooltip, Cell } from 'recharts'
 import { format } from 'date-fns'
-import { CurrentUserContext } from '@/app/providers'
-import { fetchFinances } from './card-wrapper'
-import { ChartSkeleton } from '../skeletons'
+import { FinancialData } from './card-wrapper'
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
 
-export default function OverviewChart() {
+export default function OverviewChart({
+  finances,
+}: {
+  finances: FinancialData
+}) {
   const now = new Date()
   const month = format(now, 'MMMM')
-  const { currentUser } = useContext(CurrentUserContext)
-  const userId = currentUser?.user_id
-
-  const {
-    isLoading,
-    data: finances,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: ['finances', userId],
-    queryFn: () => fetchFinances(userId),
-    enabled: !!userId,
-  })
-
-  if (!finances) {
-    return <ChartSkeleton />
-  }
+  if (!finances) return
 
   const pieData = [
     {
@@ -39,10 +24,6 @@ export default function OverviewChart() {
     { name: 'Income', value: parseInt(finances.income) || 0 },
     { name: 'Investments', value: parseInt(finances.investments) || 0 },
   ]
-
-  if (isLoading) {
-    return <ChartSkeleton />
-  }
 
   return (
     <div>
