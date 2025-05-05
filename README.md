@@ -1,14 +1,9 @@
 # Squirrl
+A personal finance dashboard created with React, NextJS and TypeScript. Charts by [Recharts](https://recharts.org/en-US). 
 
-## Work in progress ⌛
+![sq](https://github.com/user-attachments/assets/f6ca1b07-1648-4163-8f2b-3087c9e8fa3b)
 
-A personal finance dashboard created with React, NextJS and TypeScript. Charts by [Recharts](https://recharts.org/en-US).
-
-Dashboard
-![dashboard](https://github.com/user-attachments/assets/f6ecd54c-6033-4e98-85e9-1706675f0844)
-
-Login page
-![login](https://github.com/user-attachments/assets/308dde3b-fd9b-4c4d-a579-cfe94ec2becc)
+**Work in progress ⌛**
 
 ## Key features
 
@@ -16,9 +11,6 @@ Login page
 - Data entry for income and expenses
 - Data visualisation charts
 
-### To do
-
-- Settings
 
 ## Getting Started
 
@@ -30,6 +22,7 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser. Backend node server at: https://github.com/lampenny/squirrl-api
+Open [http://localhost:3000](http://localhost:3000) with your browser.
+Run it together with the backend node server at: https://github.com/lampenny/squirrl-api
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and remove external network requests for improved privacy and performance.
